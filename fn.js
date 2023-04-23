@@ -41,3 +41,14 @@ backBtn.addEventListener("click", showPrevBox);
 
 // Oculta todas las cajas excepto la primera
 hideBoxes();
+
+
+function hideBoxes() {
+  boxes.forEach((box) => {
+    if (box !== boxes[currentBoxIndex]) {
+      box.classList.remove("active");
+    } else {
+      box.classList.add("active");
+    }
+  });
+}
