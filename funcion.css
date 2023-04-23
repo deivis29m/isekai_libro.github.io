@@ -37,3 +37,16 @@ h1, h3 {
 .back-btn {
   margin-right: 30%;
 }
+
+.buttons {
+  position: fixed;
+  bottom: 10px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.back-btn {
+  margin-right: 30px;
+}
