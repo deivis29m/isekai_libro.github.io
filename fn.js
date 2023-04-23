@@ -41,6 +41,7 @@ backBtn.addEventListener("click", showPrevBox);
 
 // Oculta todas las cajas excepto la primera
 hideBoxes();
+<<<<<<< Updated upstream
 
 
 function hideBoxes() {
@@ -52,3 +53,5 @@ function hideBoxes() {
     }
   });
 }
+=======
+>>>>>>> Stashed changes

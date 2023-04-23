@@ -9,13 +9,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-bottom: 5%;
+  
 }
 
 .box {
   background-color: white;
   height: 900px;
+<<<<<<< Updated upstream
   width: 600px;
+=======
+  width: 615px;
+>>>>>>> Stashed changes
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -28,6 +32,7 @@ h1, h3 {
     text-align: justify;
 }
 
+<<<<<<< Updated upstream
 .box {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -36,3 +41,14 @@ h1, h3 {
 .box.active {
   opacity: 1;
 }
+=======
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.back-btn {
+  margin-right: 30%;
+}
+>>>>>>> Stashed changes
