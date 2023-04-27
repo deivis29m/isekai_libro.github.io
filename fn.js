@@ -1,43 +1,55 @@
-const section = document.getElementById("section");
-const backBtn = document.getElementById("backBtn");
-const nextBtn = document.getElementById("nextBtn");
-const boxes = section.querySelectorAll(".box");
-let currentBoxIndex = 0;
+var paginas = [
+  { archivo: 'pagina1.txt' },
+  { archivo: 'pagina2.txt' },
+  { archivo: 'pagina3.txt' }
+];
 
-// Oculta todas las cajas excepto la actual
-function hideBoxes() {
-  boxes.forEach((box) => {
-    if (box !== boxes[currentBoxIndex]) {
-      box.style.display = "none";
-    } else {
-      box.style.display = "flex";
+var pages = document.querySelectorAll('.page');
+var currentPage = 0;
+
+function showPage(pageIndex) {
+  for (var i = 0; i < pages.length; i++) {
+    pages[i].style.opacity = 0;
+  }
+  pages[pageIndex].style.opacity = 1;
+  currentPage = pageIndex;
+}
+
+function nextPage() {
+  if (currentPage < pages.length - 1) {
+    currentPage++;
+    showPage(currentPage);
+    cargarPagina(currentPage);
+  }
+}
+
+function prevPage() {
+  if (currentPage > 0) {
+    currentPage--;
+    showPage(currentPage);
+    cargarPagina(currentPage);
+  }
+}
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', paginas[currentPage].archivo, true);
+xhr.onload = function() {
+  if (this.status === 200) {
+    document.getElementById('page1').innerHTML = this.responseText;
+  }
+};
+xhr.send();
+
+function cargarPagina(pagina) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', paginas[pagina].archivo, true);
+  xhr.onload = function() {
+    console.log("Página cargada:", paginas[pagina].archivo); // Verificar si se carga correctamente
+    if (this.status === 200) {
+      document.getElementById('page' + (pagina + 1)).innerHTML = this.responseText;
     }
-  });
+  };
+  xhr.send();
 }
 
-// Muestra la siguiente caja
-function showNextBox() {
-  if (currentBoxIndex < boxes.length - 1) {
-    currentBoxIndex++;
-  } else {
-    currentBoxIndex = 0;
-  }
-  hideBoxes();
-}
-
-// Muestra la caja anterior
-function showPrevBox() {
-  if (currentBoxIndex > 0) {
-    currentBoxIndex--;
-  } else {
-    currentBoxIndex = boxes.length - 1;
-  }
-  hideBoxes();
-}
-
-// Agrega los eventos a los botones
-nextBtn.addEventListener("click", showNextBox);
-backBtn.addEventListener("click", showPrevBox);
-
-// Oculta todas las cajas excepto la primera
-hideBoxes();
+showPage(currentPage);
