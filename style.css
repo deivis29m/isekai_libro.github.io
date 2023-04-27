@@ -4,9 +4,10 @@ html {
 }
 
 body{
-  background: #f7f7f7;
-  
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("pexels-alexander-grey-1148399.jpg") ;
+  background-size: cover;
 }
+
 
 #book-container {
     background-color: #000000;
